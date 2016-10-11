@@ -43,7 +43,6 @@ class Lego_Pagebuilder_Panel {
             var is_lego_enabled = '<?php echo $this->is_lego_enabled; ?>';
         </script>
         <?php
-        //add component widget
         include_once WPSB_ROOT.'/widgets/vue.widgets.php';
         ?>
         <?php wp_nonce_field('save', '_wpsb_builder_nonce') ?>
@@ -75,8 +74,6 @@ class Lego_Pagebuilder_Panel {
                         foreach( $widgets->widgets as $name => $widget_data ) {
                             if( strstr( $name, 'WP_' ) ) {
                                 $widget_list['wp'] .= '<a @click=\'render_element_form( "'.$widget_data->name.'", "widget", "'.$name.'", "", "'.$widget_data->id_base.'", "true" )\' data-type="widget" data-label="'.$widget_data->name.'" data-instance="" data-name="'.$name.'" href="javascript:" class="btn btn-default mt5 mr5 mb5 br0 lego-widget-button">'.$widget_data->name.'</a>';
-                            } elseif ( strstr( $name, 'Lego_' ) ) {
-                                $widget_list['wp-sitebuilder'] .= '<a @click=\'render_element_form( "'.$widget_data->name.'", "widget", "'.$name.'", "" , "'.$widget_data->id_base.'", "true" )\' data-type="widget" data-label="'.$widget_data->name.'" data-instance="" data-name="'.$name.'" href="javascript:" class="btn btn-default mt5 mr5 mb5 br0 lego-widget-button">'.$widget_data->name.'</a>';
                             } elseif( strstr( $name, 'WC_' ) ) {
                                 $widget_list['woocommerce'] .= '<a @click=\'render_element_form( "'.$widget_data->name.'", "widget", "'.$name.'", "" , "'.$widget_data->id_base.'", "true" )\' data-type="widget" data-label="'.$widget_data->name.'" data-instance="" data-name="'.$name.'" href="javascript:" class="btn btn-default mt5 mr5 mb5 br0 lego-widget-button">'.$widget_data->name.'</a>';
                             } else {
@@ -98,31 +95,25 @@ class Lego_Pagebuilder_Panel {
                 <div slot="body">
                     <widget_list>
                         <div slot="acc-panel">
-                            <button><?php _e('Wordpress Widgets', 'wp-sitebuilder'); ?></button>
+                            <button><?php _e('Wordpress Elements', 'wp-sitebuilder'); ?></button>
                             <div>
                                 <div class="p10">
                                     <?php echo $widget_list['wp']; ?>
                                 </div>
                             </div>
-                            <button><?php _e('Lego Pagebuilder Widgets', 'wp-sitebuilder'); ?></button>
-                            <div>
-                                <div class="p10">
-                                    <?php echo $widget_list['wp-sitebuilder']? $widget_list['wp-sitebuilder'] : __('There is not custom widgets','wp-sitebuilder'); ?>
-                                </div>
-                            </div>
-                            <button><?php _e('WooCommerce Widgets', 'wp-sitebuilder'); ?></button>
+                            <button><?php _e('WooCommerce Elements', 'wp-sitebuilder'); ?></button>
                             <div>
                                 <div class="p10">
                                     <?php echo $widget_list['woocommerce']; ?>
                                 </div>
                             </div>
-                            <button><?php _e('Custom Widgets', 'wp-sitebuilder'); ?></button>
+                            <button><?php _e('Custom Elements', 'wp-sitebuilder'); ?></button>
                             <div>
                                 <div class="p10">
                                     <?php echo $widget_list['custom']? $widget_list['custom'] : __('There is not custom widgets','wp-sitebuilder'); ?>
                                 </div>
                             </div>
-                            <button><?php _e('Lego Widgets', 'wp-sitebuilder'); ?></button>
+                            <button><?php _e('WP Sitebuilder Elements', 'wp-sitebuilder'); ?></button>
                             <div>
                                 <div class="p10">
                                     <?php echo $widget_list['wp-sitebuilder']? $widget_list['wp-sitebuilder'] : __('There is not lego widgets','wp-sitebuilder'); ?>

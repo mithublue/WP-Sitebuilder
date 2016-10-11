@@ -17,14 +17,16 @@
     <div id="{{ row_id }}" class="row row-primary"
          data-type="{{ type }}" data-parent_id="{{ parent_id }}" data-parent_type="{{ parent_type }}"
     >
-        <div href="javascript:" class="btn btn-block br0 wpsb_row_label fwb">Section
-            <span class="btn btn-danger br0 pull-right btn-xs glyphicon glyphicon-remove"
-                  @click="dispatch_remove({ 'type' : 'row', 'id' : row_id, 'parent_id' : parent_id , 'parent_type' : parent_type, 'child_type' : child_type })"
-            ></span>
-            <span class="btn btn-blue br0 pull-right btn-xs glyphicon glyphicon-edit edit-row"
-                  @click="dispatch_render_row_form( { property : lego_layout.row[row_id].property, type : 'row', id : row_id } )"
-            ></span>
-            <span class="btn btn-blue br0 pull-right btn-xs glyphicon glyphicon-plus" @click="dispatch_add_placeholder(row_id)"> Placeholder </span>
+        <div href="javascript:" class="btn btn-block br0 wpsb_row_label fwb pr">Section
+            <div class="pa" style="overflow: hidden;top: 5px;right: 5px;">
+                <span class="btn btn-danger br0 pull-right btn-xs glyphicon glyphicon-remove"
+                      @click="dispatch_remove({ 'type' : 'row', 'id' : row_id, 'parent_id' : parent_id , 'parent_type' : parent_type, 'child_type' : child_type })"
+                ></span>
+                <span class="btn btn-blue br0 pull-right btn-xs glyphicon glyphicon-edit edit-row"
+                      @click="dispatch_render_row_form( { property : lego_layout.row[row_id].property, type : 'row', id : row_id } )"
+                ></span>
+                <span class="btn btn-blue br0 pull-right btn-xs glyphicon glyphicon-plus" @click="dispatch_add_placeholder(row_id)"> Placeholder </span>
+            </div>
         </div>
         <template v-for="col_id in row_data.child.col">
             <lego_col :col_id="col_id" :col_data="lego_layout.col[col_id]" :lego_layout="lego_layout"
@@ -47,26 +49,29 @@
             ></span>
             <span class="btn btn-success br0 pull-right btn-xs glyphicon glyphicon-plus" @click="popup_widgetslist(col_id)"></span>
         </div>
-        <div class="btn br0 cover_label wpsb_placeholder_label">
+        <div class="btn br0 cover_label wpsb_placeholder_label pr">
             <?php _e('Placeholder','wpsb');?>
-            <span class="btn btn-aqua br0 pull-left btn-xs glyphicon glyphicon-chevron-left"
-                  @click="grid_shorten({ 'type' : 'col', 'id' : col_id })"
-            ></span>
-            <span class="btn btn-aqua br0 pull-left btn-xs glyphicon glyphicon-chevron-right"
-                  @click="grid_enlarge({ 'type' : 'col', 'id' : col_id })"
-            ></span>
-            <span class="btn btn-aqua br0 pull-left btn-xs glyphicon pr"
-                  @click="show_grid_number_panel = true"
-            ><?php _e('Resize','wpsb'); ?>
-
+           <div class="pa" style="top: 5px;left: 5px;">
+                <span class="btn btn-aqua br0 pull-left btn-xs glyphicon glyphicon-chevron-left"
+                      @click="grid_shorten({ 'type' : 'col', 'id' : col_id })"
+                ></span>
+               <span class="btn btn-aqua br0 pull-left btn-xs glyphicon glyphicon-chevron-right"
+                     @click="grid_enlarge({ 'type' : 'col', 'id' : col_id })"
+               ></span>
+               <span class="btn btn-aqua br0 pull-left btn-xs glyphicon pr"
+                     @click="show_grid_number_panel = true"
+               ><?php _e('Resize','wpsb'); ?>
             </span>
-            <div class="wpsb-grid_number_panel pa" v-show="show_grid_number_panel == true">
-                <span @click="change_grid_width({ 'type' : 'col', 'id' : col_id, 'span' : i })" v-for="i in grid_array">{{ i }}</span>
-            </div>
-            <span class="btn btn-blue br0 pull-left btn-xs glyphicon add-builder"
-                  @click="dispatch_add_section_in_placeholder( { type : 'col', id : col_id } )"
-            ><?php _e('Divide','wpsb'); ?></span>
+               <div class="wpsb-grid_number_panel pa" v-show="show_grid_number_panel == true">
+                   <span @click="show_grid_number_panel = false" class="btn-red"><?php _e('Cancel','wpsb'); ?></span>
+                   <span @click="change_grid_width({ 'type' : 'col', 'id' : col_id, 'span' : i })" v-for="i in grid_array">{{ i }}</span>
+               </div>
+               <span class="btn btn-blue br0 pull-left btn-xs glyphicon add-builder"
+                     @click="dispatch_add_section_in_placeholder( { type : 'col', id : col_id } )"
+               ><?php _e('Divide','wpsb'); ?></span>
+           </div>
         </div>
+        <div v-if="lego_layout.col[col_id].child.element.length == 0 && lego_layout.col[col_id].child.row.length == 0"><?php _e('Add elements here','wpsb');?></div>
         <template v-for="elem_id in col_data.child.element">
             <lego_element :elem_id="elem_id" :elem_data="lego_layout.element[elem_id]" :lego_layout="lego_layout"
             :parent_type="'col'" :parent_id="col_id" :child_type="[]" :preview_data="preview_data" :type="'element'"
@@ -75,6 +80,7 @@
         <template v-for="row_id in col_data.child.row">
             <lego_row :row_id="row_id" :row_data="lego_layout.row[row_id]" :lego_layout="lego_layout"
                       :parent_type="'col'" :parent_id="col_id" :child_type="['col']" :preview_data="preview_data" :type="'row'"
+                      :grid_number="grid_number"
             ></lego_row>
         </template>
     </div>

@@ -1,6 +1,6 @@
 <?php
 /*
- * Plugin Name: WP Sitebuilder local main
+ * Plugin Name: WP Sitebuilder github
  * Plugin URI:
  * Description: Sitebuilder for your site with flexible and easy to use options
  * Author: Mithu A Quayium
@@ -84,7 +84,6 @@ class Lego_Pagebuilder {
             //scripts
             wp_enqueue_script('lego-vue', WPSB_ASSET_PATH.'/js/vue.min.js', array(), false, true );
             wp_enqueue_script('lego-vue-widget-js', WPSB_ASSET_PATH.'/js/vue-ui-widgets.js', array('lego-vue'), false, true );
-            wp_enqueue_script('pagebuilder-partials-js', WPSB_ASSET_PATH.'/js/partials.js', array('lego-vue'), false, true );
             wp_enqueue_script('lego-components-js', WPSB_ASSET_PATH.'/js/components.js', array('lego-vue'), false, true );
             wp_enqueue_script('lego-admin-js', WPSB_ASSET_PATH.'/js/admin/admin.js', array('lego-vue' ), false, true );
             wp_localize_script('lego-admin-js','wpsb_obj',array(
