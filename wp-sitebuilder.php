@@ -47,7 +47,31 @@ class Lego_Pagebuilder {
 		add_action( 'admin_enqueue_scripts', array( $this , 'enqueue_scripts_styles' ) );
         add_action( 'wp_enqueue_scripts', array( $this , 'wp_enqueue_scripts_styles' ) );
 	    $this->includes();
+
+        /**
+         * beta notice remove
+         */
+        add_action('wp_ajax_wpsb_remove_beta',function (){
+            set_transient('wpsb_beta_removed',1);
+            exit;
+        });
+        add_action('admin_notices', array($this,'beta_notice'));
+        add_action('admin_footer', array($this,'beta_remove'));
+
 	}
+
+    /**
+     * Beta notice
+     */
+    function beta_notice() {
+        if( empty(get_transient('wpsb_beta_removed') ) ) {
+            ?>
+            <div class="notice notice-warning is-dismissible wpsb-beta-notice">
+                <p><?php _e('Important ! WP Sitebuilder is in beta version yet. It is updating continuously. You can check and fork in <a href="https://github.com/mithublue/WP-Sitebuilder" target="_blank">github repo</a> too for update.', 'wpsb'); ?></p>
+            </div>
+            <?php
+        }
+    }
 
 	/**
 	 * inlcude the necessary files
@@ -111,6 +135,27 @@ class Lego_Pagebuilder {
                 wp_enqueue_script('lego-bs-js', WPSB_ASSET_PATH.'/js/bootstrap.min.js', array('jquery') );
             }
         }
+    }
+
+
+    /**
+     * beta remove code
+     */
+    function beta_remove(){
+        ?>
+        <script>
+            (function ($) {
+                $(document).on('click','.wpsb-beta-notice',function () {
+                    $.post(
+                        ajaxurl,
+                        {
+                            action : 'wpsb_remove_beta'
+                        }
+                    )
+                })
+            }(jQuery))
+        </script>
+        <?php
     }
 }
 
