@@ -1,0 +1,262 @@
+/**accordion**/
+.accordion > div[slot='acc-panel'] > button {
+    background-color: #fff;
+    color: #444;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+    border: 1px solid #dddddd;
+    border-top: none;
+}
+.accordion > div[slot='acc-panel'] > button:first-child{
+    border-top: 1px solid #dddddd;
+}
+.accordion > div[slot='acc-panel'] > button:after {
+    content: '\02795';
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+
+.accordion > div[slot='acc-panel'] > button.active, .accordion > div[slot='acc-panel'] > button:hover {
+    background-color: #eee;
+}
+
+.accordion > div[slot='acc-panel'] > button.active:after {
+    content: "\2796";
+}
+
+.accordion > div[slot='acc-panel'] > div {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: white;
+    border: 1px solid #dddddd;
+    border-top: 0 none;
+}
+
+.accordion > div[slot='acc-panel'] > div.show {
+    display: block;
+}
+/**alert**/
+.alert {
+    padding: 15px;
+    opacity: 1;
+    transition: opacity 0.6s;
+}
+.alert.danger{background-color: #f2dede;color: #a94442; border:1px solid #ebccd1;}
+.alert.success {color: #3c763d; background-color: #dff0d8; border: 1px solid #d6e9c6;}
+.alert.info {color: #31708f; background-color: #d9edf7; border: 1px solid #bce8f1}
+.alert.warning {color: #8a6d3b; background-color: #fcf8e3; border: 1px solid #faebcc}
+
+.alert-closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.alert-closebtn:hover {
+    color: black;
+}
+/**card**/
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding: 0 15px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.card-header{
+    padding: 10px 0 5px 0;
+}
+.card-content{
+    padding: 0 0 5px 0;
+}
+.card-footer {
+    border-top: 1px solid #dddddd;
+    text-align: right;
+    margin-top: 20px;
+    padding: 15px 0 15px 0;
+}
+/**chip**/
+.chip {
+    display: inline-block;
+    padding: 0 25px;
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: #f1f1f1;
+}
+
+.chip img {
+    float: left;
+    margin: 0 10px 0 -25px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.chip-closebtn {
+    padding-left: 10px;
+    color: #888;
+    font-weight: bold;
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.chip-closebtn:hover {
+    color: #000;
+}
+div[slot="chip-data"] {
+    display: inline;
+}
+/**modal**/
+.modal-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: table;
+    transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.modal-container {
+    width: 80%;
+    margin: 0px auto;
+    padding: 20px 30px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    transition: all .3s ease;
+    font-family: Helvetica, Arial, sans-serif;
+    overflow: scroll;
+    max-height: 100%;
+}
+
+.modal-header h3 {
+    margin-top: 0;
+}
+
+.modal-body {
+    margin: 20px 0;
+    max-height: 600px;
+    overflow-y: scroll;
+}
+
+.modal-default-button {
+    float: right;
+    border: 0;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+/*
+ * the following styles are auto-applied to elements with
+ * v-transition="modal" when their visiblity is toggled
+ * by Vue.js.
+ *
+ * You can easily play with the modal transition by editing
+ * these styles.
+ */
+
+.modal-enter, .modal-leave {
+    opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave .modal-container {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+/**notice**/
+.vue-danger {
+    background-color: #f2dede;
+    color: #a94442;
+    border-left: 6px solid #f44336;
+}
+
+.vue-success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border-left: 6px solid #4CAF50;
+}
+
+.vue-info {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-left: 6px solid #2196F3;
+}
+
+.vue-warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-left: 6px solid #ffeb3b;
+}
+.vue-danger,.vue-success,.vue-info,.vue-warning{
+    padding: 10px 12px;
+}
+/**tabs**/
+/* Style the list */
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    /*background-color: #f1f1f1;*/
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left; margin-bottom:0; }
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {background-color: #ddd; text-decoration: none;}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {background-color: #eeeeee !important; text-decoration: none;}
+
+/* Style the tab content */
+.tab-data > div[slot="tabdata"] > div {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-top: none;
+}
