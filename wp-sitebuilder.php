@@ -1,12 +1,13 @@
 <?php
 /*
  * Plugin Name: WP Sitebuilder github
- * Plugin URI:
+ * Plugin URI: https://wordpress.org/plugins/wp-sitebuilder/
  * Description: Sitebuilder for your site with flexible and easy to use options
  * Author: Mithu A Quayium
- * Author URI:
- * Version: 0.1
+ * Author URI: http://cybercraftit.com/
+ * Version: 0.0.1
  * Text Domain: wpsb
+ * License: GPL2
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
