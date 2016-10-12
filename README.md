@@ -29,3 +29,9 @@ This section describes how to install the plugin and get it working.
 3. ![WP Sitebuilder](http://mithublue.github.io/images/wp-sitebuilder/screenshot-3.png)
 4. ![WP Sitebuilder](http://mithublue.github.io/images/wp-sitebuilder/screenshot-4.png)
 5. ![WP Sitebuilder](http://mithublue.github.io/images/wp-sitebuilder/screenshot-5.png)
+
+#### Author
+
+Mithu A Quayium
+
+<a href="http://cybercraftit.com/" target="_blank">Offisial Site</a> | <a target="_blank" href="https://profiles.wordpress.org/mithublue">Wordpress</a> | <a target="_blank" href="https://www.linkedin.com/in/mithu-quayium-9b594630?trk=hp-identity-name">Linked In</a> | <a target="_blank" href="https://twitter.com/mithuaquayium">Twitter</a> | <a target="_blank" href="https://plus.google.com/u/0/+MithuAQuayium-MAQ">Google Plus</a> | <a target="_blank" href="https://www.facebook.com/mithu.quayium">Facebook</a>
