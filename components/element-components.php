@@ -61,7 +61,7 @@
 </template>
 <template id="wpsb-section-layout">
     <div class="section_layout" v-if="show_section_layout == 'true'">
-        <h5><?php _e('Select section layout','wpsb'); ?></h5>
+        <h5><?php _e('Select section layout','wpsb'); ?><a href="javascript:" @click="show_section_layout = false" class="btn btn-xs pull-right btn-red br0"><i class="glyphicon glyphicon-remove"></i></a></h5>
         <ul class="flul">
             <li><a href="javascript:" @click="dispatch_make_section([10,2]);"><img src="<?php echo WPSB_ASSET_PATH.'/images/wpsb-five_sixth.png'?>" alt=""></a></li>
             <li><a href="javascript:" @click="dispatch_make_section([3,3,3,3]);"><img src="<?php echo WPSB_ASSET_PATH.'/images/wpsb-fourth.png'?>" alt=""></a></li>
