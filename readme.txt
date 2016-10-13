@@ -50,6 +50,11 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 
+= 0.0.1.1 =
+
+* [fix] Improved UI
+* [new] Section layout cancelling feature added
+
 = 0.0.1 =
 
 WP Sitebuilder (beta) plugin released

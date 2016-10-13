@@ -5,7 +5,7 @@
  * Description: Sitebuilder for your site with flexible and easy to use options
  * Author: Mithu A Quayium
  * Author URI: http://cybercraftit.com/
- * Version: 0.0.1
+ * Version: 0.0.1.1
  * Text Domain: wpsb
  * License: GPL2
 */
