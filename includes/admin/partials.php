@@ -6,6 +6,10 @@
             <span class="btn btn-blue br0 pull-right btn-xs glyphicon glyphicon-plus" @click="dispatch_add_row(cont_id)"> Section </span>
         </div>
         <div>
+            <div v-if="lego_layout.container[cont_id].child.row.length == 0" class="text-center p10">
+                <?php _e('Add section here','wpsb');?>
+                <div class="mt10"><a @click="dispatch_add_row(cont_id)" href="javascript:"><i class="circle_icon wpsb_add_placeholder glyphicon glyphicon-plus text-center"></i></a></div>
+            </div>
             <template v-for="row_id in cont_data.child.row">
                 <lego_row :row_id="row_id" :row_data="lego_layout.row[row_id]" :lego_layout="lego_layout"
                           :parent_type="'container'" :parent_id="cont_id" :child_type="['col']" :preview_data="preview_data" :type="'row'"
@@ -29,6 +33,10 @@
                 ></span>
                 <span class="btn btn-blue br0 pull-right btn-xs glyphicon glyphicon-plus" @click="dispatch_add_placeholder(row_id)"> Placeholder </span>
             </div>
+        </div>
+        <div v-if="lego_layout.row[row_id].child.col.length == 0" class="text-center p10">
+            <?php _e('Add placeholder here','wpsb');?>
+            <div class="mt10"><a @click="dispatch_add_placeholder(row_id)" href="javascript:"><i class="circle_icon wpsb_add_placeholder glyphicon glyphicon-plus text-center"></i></a></div>
         </div>
         <div style="padding: 10px;">
             <template v-for="col_id in row_data.child.col">
@@ -75,7 +83,10 @@
                ><?php _e('Divide','wpsb'); ?></span>
            </div>
         </div>
-        <div v-if="lego_layout.col[col_id].child.element.length == 0 && lego_layout.col[col_id].child.row.length == 0" class="text-center p10"><?php _e('Add elements here','wpsb');?></div>
+        <div v-if="lego_layout.col[col_id].child.element.length == 0 && lego_layout.col[col_id].child.row.length == 0" class="text-center p10">
+            <?php _e('Add elements here','wpsb');?>
+            <div class="mt10"><a @click="popup_widgetslist(col_id)" href="javascript:"><i class="circle_icon wpsb_add_placeholder glyphicon glyphicon-plus text-center"></i></a></div>
+        </div>
         <template v-for="elem_id in col_data.child.element">
             <lego_element :elem_id="elem_id" :elem_data="lego_layout.element[elem_id]" :lego_layout="lego_layout"
             :parent_type="'col'" :parent_id="col_id" :child_type="[]" :preview_data="preview_data" :type="'element'"

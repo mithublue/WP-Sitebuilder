@@ -72,7 +72,7 @@
             <li><a href="javascript:" @click="dispatch_make_section([9,3]);"><img src="<?php echo WPSB_ASSET_PATH.'/images/wpsb-three_fourth.png'?>" alt=""></a></li>
             <li><a href="javascript:" @click="dispatch_make_section([6,2,2,2]);"><img src="<?php echo WPSB_ASSET_PATH.'/images/wpsb-two_fifth.png'?>" alt=""></a></li>
             <li><a href="javascript:" @click="dispatch_make_section([8,4]);"><img src="<?php echo WPSB_ASSET_PATH.'/images/wpsb-two_third.png'?>" alt=""></a></li>
-            <li><a href="javascript:" class="btn btn-default" @click="dispatch_bring_custom_layout();">Custom</a></li>
+            <li><a href="javascript:" class="btn btn-default br0 glyphicon" @click="dispatch_bring_custom_layout();">Custom</a></li>
         </ul>
     </div>
 </template>

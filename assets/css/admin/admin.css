@@ -94,4 +94,10 @@
   color: #777777;
   display: block;
 }
+.wpsb_add_placeholder {
+  border: 1px solid #ccc;
+  padding: 15px;
+  color: #aaa;
+  font-size: 20px;
+}
 /*# sourceMappingURL=admin.css.map */

@@ -344,3 +344,8 @@
 .fr{float: right;}
 .flul li{float: left;}
 .frul li{float: right;}
+.circle_icon{
+    -webkit-border-radius:100px;
+    -moz-border-radius:100px;
+    border-radius:100px;
+}
