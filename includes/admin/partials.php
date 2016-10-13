@@ -5,12 +5,14 @@
         <div href="javascript:" class="btn br0 cover_label wpsb_wrapper_label">Builder
             <span class="btn btn-blue br0 pull-right btn-xs glyphicon glyphicon-plus" @click="dispatch_add_row(cont_id)"> Section </span>
         </div>
-        <template v-for="row_id in cont_data.child.row">
-            <lego_row :row_id="row_id" :row_data="lego_layout.row[row_id]" :lego_layout="lego_layout"
-            :parent_type="'container'" :parent_id="cont_id" :child_type="['col']" :preview_data="preview_data" :type="'row'"
-                      :grid_number="grid_number"
-            ></lego_row>
-        </template>
+        <div>
+            <template v-for="row_id in cont_data.child.row">
+                <lego_row :row_id="row_id" :row_data="lego_layout.row[row_id]" :lego_layout="lego_layout"
+                          :parent_type="'container'" :parent_id="cont_id" :child_type="['col']" :preview_data="preview_data" :type="'row'"
+                          :grid_number="grid_number"
+                ></lego_row>
+            </template>
+        </div>
     </div>
 </template>
 <template id="row-template">
@@ -28,19 +30,21 @@
                 <span class="btn btn-blue br0 pull-right btn-xs glyphicon glyphicon-plus" @click="dispatch_add_placeholder(row_id)"> Placeholder </span>
             </div>
         </div>
-        <template v-for="col_id in row_data.child.col">
-            <lego_col :col_id="col_id" :col_data="lego_layout.col[col_id]" :lego_layout="lego_layout"
-            :parent_type="'row'" :parent_id="row_id" :child_type="['element','row']" :preview_data="preview_data" :type="'col'"
-                      :grid_number="grid_number"
-            ></lego_col>
-        </template>
+        <div style="padding: 10px;">
+            <template v-for="col_id in row_data.child.col">
+                <lego_col :col_id="col_id" :col_data="lego_layout.col[col_id]" :lego_layout="lego_layout"
+                          :parent_type="'row'" :parent_id="row_id" :child_type="['element','row']" :preview_data="preview_data" :type="'col'"
+                          :grid_number="grid_number"
+                ></lego_col>
+            </template>
+        </div>
     </div>
 </template>
 <template id="col-template">
     <div id="{{ col_id }}" class="col-sm-{{ col_data.span }} placeholder-primary lego-placeholder"
          data-type="{{ type }}" data-parent_id="{{ parent_id }}" data-parent_type="{{ parent_type }}"
     >
-        <div class="text-center" style="overflow: hidden;margin-left: -15px; margin-right: -15px; background: #ffffff">
+        <div class="text-center" style="overflow: hidden;margin-left: -15px; margin-right: -15px; position:absolute;top: -25px;">
             <span class="btn btn-danger br0 pull-right btn-xs glyphicon glyphicon-remove"
                   @click="dispatch_remove({ 'type' : 'col', 'id' : col_id, 'parent_id' : parent_id , 'parent_type' : parent_type, 'child_type' : child_type })"
             ></span>
@@ -71,7 +75,7 @@
                ><?php _e('Divide','wpsb'); ?></span>
            </div>
         </div>
-        <div v-if="lego_layout.col[col_id].child.element.length == 0 && lego_layout.col[col_id].child.row.length == 0"><?php _e('Add elements here','wpsb');?></div>
+        <div v-if="lego_layout.col[col_id].child.element.length == 0 && lego_layout.col[col_id].child.row.length == 0" class="text-center p10"><?php _e('Add elements here','wpsb');?></div>
         <template v-for="elem_id in col_data.child.element">
             <lego_element :elem_id="elem_id" :elem_data="lego_layout.element[elem_id]" :lego_layout="lego_layout"
             :parent_type="'col'" :parent_id="col_id" :child_type="[]" :preview_data="preview_data" :type="'element'"
