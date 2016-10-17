@@ -217,16 +217,12 @@ class Wpsb_Post_Carousel extends WP_Widget{
                 ob_start();
                 while ( $slider_posts->have_posts() ) {
                     $slider_posts->the_post();
-
-
                     ?>
                     <!--<li data-target="#<?php /*echo $i['settings']['slider_id']; */?>" data-slide-to="<?php /*echo $key; */?>" <?php /*echo ( $key == 0 ? 'class="active"' : '' ); */?> ></li>-->
                     <?php
 
                     $navigations .= '<li data-target="#'.$i['settings']['slider_id'].'" data-slide-to="'.$key.'" '. ( $key == 0 ? 'class="active"' : '' ).'></li>';
                     ?>
-
-
                     <div class="item <?php echo ( $key == 0 ? 'active' : '' ); ?>">
                         <?php
                         $key++;
@@ -255,7 +251,7 @@ class Wpsb_Post_Carousel extends WP_Widget{
                             }
                             if( $i['data']['slide_content']['excerpt']) {
                                 ?>
-                                <div><?php the_excerpt(); ?></div>
+                                <div><?php wpsb_excerpt(); ?></div>
                                 <?php
                             }
                             if( $i['data']['slide_content']['content'] ) {

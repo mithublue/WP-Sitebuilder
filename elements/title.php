@@ -51,7 +51,7 @@ class Wpsb_Title extends WP_Widget{
                     }
                 },
                 ready : function () {
-                    if( this.instance.length == 0 $data) {
+                    if( this.instance.length == 0 ) {
                         this.instance = {
                             'tag' : 'h2',
                             'align' : 'center'

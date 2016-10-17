@@ -81,6 +81,7 @@ class Lego_Pagebuilder {
 	public function includes(){
         include_once WPSB_ROOT.'/wpsb-functions.php';
         include_once WPSB_ROOT.'/includes/ajax-actions.php';
+        include_once WPSB_ROOT.'/includes/admin/templates-panel.php';
 		include_once WPSB_ROOT.'/includes/admin/pagebuilder-panel.php';
         include_once WPSB_ROOT.'/elements/init.php';
 
@@ -106,15 +107,16 @@ class Lego_Pagebuilder {
 
             wp_enqueue_style('wpsb-element-css', WPSB_ASSET_PATH.'/css/admin/element.admin.min.css' );
 
-            //scripts
             wp_enqueue_script('lego-vue', WPSB_ASSET_PATH.'/js/vue.min.js', array(), false, true );
             wp_enqueue_script('lego-vue-widget-js', WPSB_ASSET_PATH.'/js/vue-ui-widgets.js', array('lego-vue'), false, true );
             wp_enqueue_script('lego-components-js', WPSB_ASSET_PATH.'/js/components.js', array('lego-vue'), false, true );
             wp_enqueue_script('lego-admin-js', WPSB_ASSET_PATH.'/js/admin/admin.js', array('lego-vue' ), false, true );
             wp_localize_script('lego-admin-js','wpsb_obj',array(
-                'ajaxnonce' => wp_create_nonce( "wpsb_builder_nonce" )
+                'ajaxnonce' => wp_create_nonce( "wpsb_builder_nonce" ),
+                'styles_obj' => json_encode(require_once WPSB_ROOT.'/includes/admin/style-obj.php')
             ));
             wp_enqueue_script( 'jquery-ui-sortable' );
+
         }
     }
 
