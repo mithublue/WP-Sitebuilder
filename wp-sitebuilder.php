@@ -112,8 +112,7 @@ class Lego_Pagebuilder {
             wp_enqueue_script('lego-components-js', WPSB_ASSET_PATH.'/js/components.js', array('lego-vue'), false, true );
             wp_enqueue_script('lego-admin-js', WPSB_ASSET_PATH.'/js/admin/admin.js', array('lego-vue' ), false, true );
             wp_localize_script('lego-admin-js','wpsb_obj',array(
-                'ajaxnonce' => wp_create_nonce( "wpsb_builder_nonce" ),
-                'styles_obj' => json_encode(require_once WPSB_ROOT.'/includes/admin/style-obj.php')
+                'ajaxnonce' => wp_create_nonce( "wpsb_builder_nonce" )
             ));
             wp_enqueue_script( 'jquery-ui-sortable' );
 
