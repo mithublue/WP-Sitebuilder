@@ -269,4 +269,4 @@ class Lego_Pagebuilder_Panel {
         new Lego_Pagebuilder_Panel();
     }
 }
-Lego_Pagebuilder_Panel::init();
+Lego_Pagebuilder_Panel::init(); 
