@@ -15,10 +15,12 @@ This plugin is to let you build your site quite easily without any coding with e
 =Features=
 
 * Drag and drop pagebuilder
+* Custom template chooser for each post
 * Lightweight
 * Easy to use
 * Easily customizable
 * Easily extendable
+
 
 =Apart from this=
 
