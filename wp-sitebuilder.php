@@ -197,7 +197,7 @@ add_action('in_plugin_update_message-wp-sitebuilder/wp-sitebuilder.php', 'showUp
 function showUpgradeNotification($currentPluginMetadata, $newPluginMetadata){
     // check "upgrade_notice"
     if (isset($newPluginMetadata->upgrade_notice) && strlen(trim($newPluginMetadata->upgrade_notice)) > 0){
-        echo '<p style="background-color: #d54e21; padding: 10px; color: #f9f9f9; margin-top: 10px"><strong>Important Upgrade Notice:</strong></p> ';
+        echo '<p style="background-color: #d54e21; padding: 10px; color: #f9f9f9; margin-top: 10px"><strong>Important Upgrade Notice:</strong>';
         echo esc_html($newPluginMetadata->upgrade_notice), '</p>';
     }
 }
