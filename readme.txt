@@ -4,7 +4,7 @@ Donate link:
 Tags:  sitebuilder, wp sitebuilder, wordpress sitebuilder, content builder, wp content builder, formbuilder, form builder, wp formbuilder, wp layout builder, layout editor, wp layout editor, landing page builder,  layout customizer, layouts, page builder, pagebuilder, admin, builder, cms, content, CSS, gallery, grid, layout, page, pages, Post, responsive, widget, widgets, Adaptive Editor, all in one, BackEnd builder, BackEnd editor, builder, coming soon page, creating landing pages, custom pages, design, drag and drop builder, Drag And Drop editor, Drag drop, edit, editing, editor, fonts, home page builder, html5, image, image backgrounds, images layout, layout builder, layout builder plugin, live editor, page, page builder, page builder plugin, Page Editor, Page Layout, responsive, short, short code, shortcode, site-builder, template, Template Builder, templates, theme builder, TinyMCE, transitions, video backgrounds, visual builder, visual composer, visual editor, website builder, widgets, wordpress, wysiwyg editor
 Requires at least: 3.0.1
 Tested up to: 4.6.1
-Stable tag: 0.0.1
+Stable tag: 0.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,12 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 
+= 0.0.2 =
+
+* [new] Templates panel added for any post of any post type. Now admin can assign template to any post type's post
+* [fix] File not found - error fixed
+* [new] Actions and filters added to Pagebuilder panel for easy extensibility
+
 = 0.0.1.1 =
 
 * [fix] Improved UI
@@ -58,3 +64,9 @@ This section describes how to install the plugin and get it working.
 = 0.0.1 =
 
 WP Sitebuilder (beta) plugin released
+
+== Upgrade Notice ==
+
+= 0.0.2 =
+
+A major update has been added to the plugin with extended feature and functionalities !

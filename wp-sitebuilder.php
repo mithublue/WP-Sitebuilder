@@ -5,7 +5,7 @@
  * Description: Sitebuilder for your site with flexible and easy to use options
  * Author: Mithu A Quayium
  * Author URI: http://cybercraftit.com/
- * Version: 0.0.1.1
+ * Version: 0.0.2
  * Text Domain: wpsb
  * License: GPL2
 */
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Required minimums and constants
  */
-define( 'WPSB_VERSION', '0.0.1.1' );
+define( 'WPSB_VERSION', '0.0.2' );
 define( 'WPSB_ROOT', dirname(__FILE__) );
 define( 'WPSB_ASSET_PATH', plugins_url('assets',__FILE__) );
 
@@ -191,3 +191,13 @@ class WPSB_Pagebuilder {
 }
 
 WPSB_Pagebuilder::get_instance();
+
+// add plugin upgrade notification
+add_action('in_plugin_update_message-wp-sitebuilder/wp-sitebuilder.php', 'showUpgradeNotification', 10, 2);
+function showUpgradeNotification($currentPluginMetadata, $newPluginMetadata){
+    // check "upgrade_notice"
+    if (isset($newPluginMetadata->upgrade_notice) && strlen(trim($newPluginMetadata->upgrade_notice)) > 0){
+        echo '<p style="background-color: #d54e21; padding: 10px; color: #f9f9f9; margin-top: 10px"><strong>Important Upgrade Notice:</strong></p> ';
+        echo esc_html($newPluginMetadata->upgrade_notice), '</p>';
+    }
+}
