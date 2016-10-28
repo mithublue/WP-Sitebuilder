@@ -9,6 +9,12 @@ class Lego_Pagebuilder_Panel {
         add_action( 'add_meta_boxes', array( $this, 'pagebuilder_meta_box' ), 10, 2 );
         add_action( 'edit_form_after_title' , array( $this, 'pagebuilder_button' ) );
         add_action( 'save_post', array( $this, 'save_lego_data' ) );
+
+        //prepare widget list
+        add_filter( 'wpsb_widget_element_list', array( $this, 'populate_wp_widgets' ) );
+        add_filter( 'wpsb_widget_element_list', array( $this, 'populate_sitebuilder_elements' ) );
+        add_filter( 'wpsb_widget_element_list_labels' ,array( $this, 'add_widget_list_label' ),10 , 2 );
+        add_filter( 'wpsb_widget_element_list_labels' ,array( $this, 'add_sitebuilder_widget_list_label' ),10 , 2 );
     }
 
 
@@ -28,6 +34,65 @@ class Lego_Pagebuilder_Panel {
 
     function pagebuilder_meta_box( $post_type, $post ) {
         add_meta_box( 'lego-pagebuilder-editor', 'Pagebuilder', array( $this, 'pagebuilder_editor_content' ) , $post_type, 'advanced', 'default' );
+    }
+
+    /**
+     * Add wp widget to popup
+     * @param $widget_list
+     */
+    function populate_wp_widgets( $widget_list ) {
+        $widgets = $GLOBALS['wp_widget_factory'];
+        foreach( $widgets->widgets as $name => $widget_data ) {
+            if( strstr( $name, 'WP_' ) ) {
+                $widget_list['wp'] .= '<a @click=\'render_element_form( "'.$widget_data->name.'", "widget", "'.$name.'", "", "'.$widget_data->id_base.'", "true" )\' data-type="widget" data-label="'.$widget_data->name.'" data-instance="" data-name="'.$name.'" href="javascript:" class="btn btn-default mt5 mr5 mb5 br0 lego-widget-button">'.$widget_data->name.'</a>';
+            } elseif( strstr( $name, 'WC_' ) ) {
+                $widget_list['woocommerce'] .= '<a @click=\'render_element_form( "'.$widget_data->name.'", "widget", "'.$name.'", "" , "'.$widget_data->id_base.'", "true" )\' data-type="widget" data-label="'.$widget_data->name.'" data-instance="" data-name="'.$name.'" href="javascript:" class="btn btn-default mt5 mr5 mb5 br0 lego-widget-button">'.$widget_data->name.'</a>';
+            } else {
+                $widget_list['custom'] .= '<a @click=\'render_element_form( "'.$widget_data->name.'", "widget", "'.$name.'", "" , "'.$widget_data->id_base.'", "true" )\' data-type="widget" data-label="'.$widget_data->name.'" data-instance="" data-name="'.$name.'" href="javascript:" class="btn btn-default mt5 mr5 mb5 br0 lego-widget-button">'.$widget_data->name.'</a>';
+            }
+
+            $widget_list = apply_filters('wpsb_widget_list',$widget_list);
+        }
+
+        return $widget_list;
+    }
+
+    public function add_widget_list_label( $widget_list_labels, $widget_list ) {
+
+        if( isset( $widget_list['wp'] ) ) {
+            $widget_list_labels['wp'] = 'Wordpress Elements';
+        }
+
+        if( isset( $widget_list['woocommerce'] ) ) {
+            $widget_list_labels['woocommerce'] = 'WooCommerce Elements';
+        }
+
+        if( isset( $widget_list['custom'] ) ) {
+            $widget_list_labels['custom'] = 'Custom Elements';
+        }
+
+        return $widget_list_labels;
+    }
+
+    /**
+     * Add sitebuilder elements to popup
+     * @param $widget_list
+     */
+    function populate_sitebuilder_elements( $widget_list ) {
+        global $wpsb_widgets;
+        foreach ( $wpsb_widgets as $widget_name => $lego_widget ) {
+            $widget_list['wp-sitebuilder'] .= '<a @click=\'render_element_form( "' . $lego_widget['label'] . '", "widget", "' . $widget_name . '", "" , "'.$lego_widget['id_base'].'", "false" )\' data-type="widget" data-label="" data-instance="" data-name="" href="javascript:" class="btn btn-default mt5 mr5 mb5 br0 lego-widget-button">' . $lego_widget['label'] . '</a>';
+            $widget_list = apply_filters('wpsb_nonwidget_element_list',$widget_list);
+        }
+
+        return $widget_list;
+    }
+
+    function add_sitebuilder_widget_list_label( $widget_list_labels, $widget_list ) {
+        if( isset( $widget_list['wp-sitebuilder'] ) ) {
+            $widget_list_labels['wp-sitebuilder'] = 'WP Sitebuilder Elements';
+        }
+        return $widget_list_labels;
     }
 
     function pagebuilder_editor_content( $post ){
@@ -66,28 +131,17 @@ class Lego_Pagebuilder_Panel {
                                 </div>
                             </div>
                         </modal>
-                        <?php $widgets = $GLOBALS['wp_widget_factory'];
-                        global $wpsb_widgets;
-                        //pri($wpsb_widgets);
-                        //pri($widgets);
+                        <?php
                         $widget_list = array();
-                        foreach( $widgets->widgets as $name => $widget_data ) {
-                            if( strstr( $name, 'WP_' ) ) {
-                                $widget_list['wp'] .= '<a @click=\'render_element_form( "'.$widget_data->name.'", "widget", "'.$name.'", "", "'.$widget_data->id_base.'", "true" )\' data-type="widget" data-label="'.$widget_data->name.'" data-instance="" data-name="'.$name.'" href="javascript:" class="btn btn-default mt5 mr5 mb5 br0 lego-widget-button">'.$widget_data->name.'</a>';
-                            } elseif( strstr( $name, 'WC_' ) ) {
-                                $widget_list['woocommerce'] .= '<a @click=\'render_element_form( "'.$widget_data->name.'", "widget", "'.$name.'", "" , "'.$widget_data->id_base.'", "true" )\' data-type="widget" data-label="'.$widget_data->name.'" data-instance="" data-name="'.$name.'" href="javascript:" class="btn btn-default mt5 mr5 mb5 br0 lego-widget-button">'.$widget_data->name.'</a>';
-                            } else {
-                                $widget_list['custom'] .= '<a @click=\'render_element_form( "'.$widget_data->name.'", "widget", "'.$name.'", "" , "'.$widget_data->id_base.'", "true" )\' data-type="widget" data-label="'.$widget_data->name.'" data-instance="" data-name="'.$name.'" href="javascript:" class="btn btn-default mt5 mr5 mb5 br0 lego-widget-button">'.$widget_data->name.'</a>';
-                            }
-                        }
+                        $widget_list_labels = array();
 
-                        foreach ( $wpsb_widgets as $widget_name => $lego_widget ) {
-                            $widget_list['wp-sitebuilder'] .= '<a @click=\'render_element_form( "' . $lego_widget['label'] . '", "widget", "' . $widget_name . '", "" , "'.$lego_widget['id_base'].'", "false" )\' data-type="widget" data-label="" data-instance="" data-name="" href="javascript:" class="btn btn-default mt5 mr5 mb5 br0 lego-widget-button">' . $lego_widget['label'] . '</a>';
-                        }
+                        $widget_list = apply_filters( 'wpsb_widget_element_list', $widget_list );
+                        $widget_list_labels = apply_filters( 'wpsb_widget_element_list_labels', $widget_list_labels, $widget_list );
                         ?>
                     </div>
                 </div>
             </div>
+            <?php do_action( 'wpsb_widget_listing_before', $widget_list ); ?>
             <modal :show.sync="show" default_button="false">
                 <div slot="header">
                     <h3><?php _e('Elements','wpsb');?></h3>
@@ -95,30 +149,19 @@ class Lego_Pagebuilder_Panel {
                 <div slot="body">
                     <widget_list>
                         <div slot="acc-panel">
-                            <button><?php _e('Wordpress Elements', 'wp-sitebuilder'); ?></button>
-                            <div>
-                                <div class="p10">
-                                    <?php echo $widget_list['wp']; ?>
+                            <?php
+                            foreach ( $widget_list_labels as $slug => $label ) {
+                                ?>
+                                <button><?php _e($label, 'wp-sitebuilder'); ?></button>
+                                <div>
+                                    <div class="p10">
+                                        <?php echo $widget_list[$slug]; ?>
+                                    </div>
                                 </div>
-                            </div>
-                            <button><?php _e('WooCommerce Elements', 'wp-sitebuilder'); ?></button>
-                            <div>
-                                <div class="p10">
-                                    <?php echo $widget_list['woocommerce']; ?>
-                                </div>
-                            </div>
-                            <button><?php _e('Custom Elements', 'wp-sitebuilder'); ?></button>
-                            <div>
-                                <div class="p10">
-                                    <?php echo $widget_list['custom']? $widget_list['custom'] : __('There is not custom widgets','wp-sitebuilder'); ?>
-                                </div>
-                            </div>
-                            <button><?php _e('WP Sitebuilder Elements', 'wp-sitebuilder'); ?></button>
-                            <div>
-                                <div class="p10">
-                                    <?php echo $widget_list['wp-sitebuilder']? $widget_list['wp-sitebuilder'] : __('There is not lego widgets','wp-sitebuilder'); ?>
-                                </div>
-                            </div>
+                                <?php
+                            }
+                            ?>
+                            <?php do_action( 'wpsb_widget_listing', $widget_list ); ?>
                         </div>
                     </widget_list>
                 </div>
