@@ -81,7 +81,7 @@ class WPSB_Pagebuilder {
      */
     function build_admin_menu_page() {
         add_menu_page( __('WP Sitebuilder','wpsb'), __('WP Sitebuilder','wpsb'), 'manage_options','wpsb-menu', function(){
-            include_once '';
+            include_once WPSB_ROOT.'/includes/admin/wpsb-settings-panel.php';
         } );
         do_action('wpsb_admin_menu', 'wpsb-menu' );
         add_submenu_page( 'wpsb-menu', __('Get Mote Features','wpsb'), __('Get Mote Features','wpsb'), 'manage_options','wpsb_add_ons', array($this,'add_on_page') );
