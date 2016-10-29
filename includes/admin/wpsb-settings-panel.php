@@ -1,11 +1,14 @@
 <div class="bs-container">
-    <div class="container" id="wpsb-settings">
+    <div class="container" id="wpsb-settings" v-cloak>
         <div class="row">
             <div class="col-sm-12 mb10">
                 <h4><?php _e( 'Disable pagebuilder for : ', 'wpsb'); ?></h4>
             </div>
             <div class="col-sm-12 mb10">
-                <?php $post_types = get_post_types(); ?>
+                <?php
+                $post_types = get_post_types();
+                $post_types = apply_filters( 'wpsb_pb_disablitiy_list', $post_types );
+                ?>
                 <div v-for="( typename, typelabel ) in post_types">
                     <div v-if="disable_post_types[typename] == 'false'"> aaa
                         {{ disable_post_types[typename] = false }}

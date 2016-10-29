@@ -52,6 +52,10 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 
+= 0.0.2.1 =
+
+* [new] Settings panel added. Admin can now disable pagebuilder for a specific post types.
+
 = 0.0.2 =
 
 * [new] Templates panel added for any post of any post type. Now admin can assign template to any post type's post
