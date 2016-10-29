@@ -42,6 +42,18 @@ class WPSB_Ajax{
             }
             exit;
         } );
+
+        /**
+         * Selected post types will be
+         * disabled for pagebuilders
+         */
+        add_action( 'wp_ajax_wpsb_disabled_pagebuilder_for_post_types', function() {
+            set_transient( 'non_pagebuilder_post_types', $_POST['disabled_for_post_types'] );
+            exit;
+        });
+
+
+
     }
 }
 

@@ -33,6 +33,7 @@ class Lego_Pagebuilder_Panel {
     }
 
     function pagebuilder_meta_box( $post_type, $post ) {
+        if( !is_pagebuilder_enabled_post_type( $post_type ) ) return;
         add_meta_box( 'lego-pagebuilder-editor', 'Pagebuilder', array( $this, 'pagebuilder_editor_content' ) , $post_type, 'advanced', 'default' );
     }
 

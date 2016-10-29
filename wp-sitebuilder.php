@@ -146,6 +146,14 @@ class WPSB_Pagebuilder {
             wp_enqueue_script( 'jquery-ui-sortable' );
 
         }
+
+        if( isset( $_GET['page'] ) && $_GET['page'] == 'wpsb-menu' ) {
+            wp_enqueue_style('lego-wrapper-css');
+            wp_enqueue_style('lego-framework-css');
+            wp_enqueue_style('lego-admin-css');
+
+            wp_enqueue_script('wpsb-vue');
+        }
     }
 
     /**

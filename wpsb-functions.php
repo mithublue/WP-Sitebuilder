@@ -300,3 +300,24 @@ if ( ! function_exists( 'wpsb_categorized_blog' ) ) :
         }
     }
 endif;
+
+/***
+ * check if the given post type
+ * is enabled for post type
+ */
+function is_pagebuilder_enabled_post_type( $post_type ) {
+    $non_pagebuilder_post_types = get_transient( 'non_pagebuilder_post_types' );
+
+    if( is_array( $non_pagebuilder_post_types ) ) {
+        if( isset( $non_pagebuilder_post_types[$post_type] ) && $non_pagebuilder_post_types[$post_type] == true ) return false;
+        else return true;
+    } else {
+        return true;
+    }
+}
+
+function get_non_pagebuilder_post_types() {
+    $non_pagebuilder_post_types = get_transient( 'non_pagebuilder_post_types' );
+    if( !is_array( $non_pagebuilder_post_types ) ) $non_pagebuilder_post_types = array();
+    return $non_pagebuilder_post_types;
+}
