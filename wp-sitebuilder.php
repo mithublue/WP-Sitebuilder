@@ -5,7 +5,7 @@
  * Description: Sitebuilder for your site with flexible and easy to use options
  * Author: Mithu A Quayium
  * Author URI: http://cybercraftit.com/
- * Version: 0.0.2.1
+ * Version: 0.0.2.2
  * Text Domain: wpsb
  * License: GPL2
 */
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Required minimums and constants
  */
-define( 'WPSB_VERSION', '0.0.2.1' );
+define( 'WPSB_VERSION', '0.0.2.2' );
 define( 'WPSB_ROOT', dirname(__FILE__) );
 define( 'WPSB_ASSET_PATH', plugins_url('assets',__FILE__) );
 
@@ -150,9 +150,11 @@ class WPSB_Pagebuilder {
         if( isset( $_GET['page'] ) && $_GET['page'] == 'wpsb-menu' ) {
             wp_enqueue_style('lego-wrapper-css');
             wp_enqueue_style('lego-framework-css');
+            wp_enqueue_style('wpsb-vue-widget-css');// vue ui widget css
             wp_enqueue_style('lego-admin-css');
 
             wp_enqueue_script('wpsb-vue');
+            wp_enqueue_script('lego-components-js');
         }
     }
 

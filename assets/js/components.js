@@ -136,3 +136,24 @@ Vue.component('wpsb_preview_modal',{
     template : '#wpsb_preview_modal',
     props : ['show','default_button'],
 });
+
+/**notice modal**/
+Vue.component('notice_modal',{
+    template : '#notice_modal',
+    props : ['show','default_button','disappear'],
+    events : {
+        hide_custom_layout_modal : function () {
+            this.show = false;
+        }
+    },
+    methods : {
+        modal_disappear : function () {
+            var temp = this;
+            if( this.disappear == 'auto' ) {
+                setTimeout(function () {
+                    temp.show = false;
+                },1000);
+            }
+        }
+    }
+});

@@ -121,3 +121,23 @@
     </div>
 </template>
 <!--end element preview modal-->
+
+<!--notice modal-->
+<template id="notice_modal">
+    <div class="modal-mask" v-show="show" transition="modal">
+        <div class="modal-wrapper">
+            <div v-if="show">
+                {{ modal_disappear() }}
+            </div>
+            <div style="padding: 30px; overflow: hidden; background: #ffffff">
+                <slot name="header"></slot>
+                <slot name="body"></slot>
+                <slot name="footer"></slot>
+                <button v-if="default_button == 'true'" class="modal-default-button"
+                        @click="show = false">
+                    OK
+                </button>
+            </div>
+        </div>
+    </div>
+</template>

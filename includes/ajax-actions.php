@@ -48,7 +48,15 @@ class WPSB_Ajax{
          * disabled for pagebuilders
          */
         add_action( 'wp_ajax_wpsb_disabled_pagebuilder_for_post_types', function() {
-            set_transient( 'non_pagebuilder_post_types', $_POST['disabled_for_post_types'] );
+            $ret = set_transient( 'non_pagebuilder_post_types', $_POST['disabled_for_post_types'] );
+            $result = array();
+
+            if( $ret ) {
+                $result['success'] = 'Data saved successfully !';
+            } else {
+                $result['error'] = 'Data could not be saved !';
+            }
+            echo json_encode($result);
             exit;
         });
 

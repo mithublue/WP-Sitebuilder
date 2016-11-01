@@ -1,3 +1,4 @@
+<?php include_once WPSB_ROOT.'/components/element-components.php'; ?>
 <div class="bs-container">
     <div class="container" id="wpsb-settings" v-cloak>
         <div class="row">
@@ -23,6 +24,13 @@
                 <input type="submit" name="save_wpsb_settings" @click="save_wpsb_settings" value="<?php _e( 'Save', 'wpsb' ); ?>">
             </div>
         </div>
+        <notice_modal :show.sync="show_result_panel" default_button="true" disappear="auto">
+            <div slot="header">
+                <div v-if="result.success" class="alert alert-success">
+                    {{ result.success }}
+                </div>
+            </div>
+        </notice_modal>
     </div>
     <script>
         jQuery(document).ready(function () {
@@ -30,7 +38,9 @@
                 el : '#wpsb-settings',
                 data : {
                     post_types : JSON.parse('<?php echo json_encode($post_types); ?>'),
-                    disable_post_types : JSON.parse('<?php echo json_encode( get_non_pagebuilder_post_types() ); ?>')
+                    disable_post_types : JSON.parse('<?php echo json_encode( get_non_pagebuilder_post_types() ); ?>'),
+                    result : {},
+                    show_result_panel : false
                 },
                 methods : {
                     save_wpsb_settings : function () {
@@ -41,8 +51,11 @@
                                 disabled_for_post_types : wpsb_settings.disable_post_types
                             },
                             function (data) {
-                                console.log(data);
-                                alert( 'Data is saved !' );
+                                wpsb_settings.result = JSON.parse(data);
+                                if( wpsb_settings.result.success ) {
+                                    wpsb_settings.show_result_panel = true;
+                                }
+
                             }
                         )
                     }
