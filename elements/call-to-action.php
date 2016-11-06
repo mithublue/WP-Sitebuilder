@@ -65,7 +65,6 @@ class Wpsb_Call_to_Action extends Wpsb_Base_Element {
 
     function widget($args, $instance) {
         ?>
-        <?php echo $args['before_widget']; ?>
         <div class="Wpsb_Call_to_Action">
             <?php echo $args['before_title']; ?>
             <?php echo $instance['title']; ?>
@@ -79,7 +78,6 @@ class Wpsb_Call_to_Action extends Wpsb_Base_Element {
                 </div>
             </div>
         </div>
-        <?php echo $args['after_widget']; ?>
         <?php
     }
 

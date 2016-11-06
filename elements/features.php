@@ -193,7 +193,6 @@ class Wpsb_Features extends WP_Widget{
     }
 
     function widget($args, $i) {
-        echo $args['before_widget'];
         ?>
         <div class="bs-container">
             <div class="container-fluid">
@@ -224,7 +223,6 @@ class Wpsb_Features extends WP_Widget{
             </div>
         </div>
         <?php
-        echo $args['after_widget'];
     }
 }
 

@@ -38,7 +38,6 @@ class Wpsb_Embedded_Video extends Wpsb_Base_Element {
 
     function widget($args, $instance) {
         ?>
-        <?php echo $args['before_widget']; ?>
         <div>
             <?php echo $args['before_title']; ?>
             <?php echo $instance['title']; ?>
@@ -53,7 +52,6 @@ class Wpsb_Embedded_Video extends Wpsb_Base_Element {
             }
             echo wp_oembed_get($instance['url'], $params );?>
         </div>
-        <?php echo $args['after_widget']; ?>
         <?php
     }
 

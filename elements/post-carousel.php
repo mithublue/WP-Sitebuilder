@@ -184,7 +184,6 @@ class Wpsb_Post_Carousel extends WP_Widget{
     }
 
     function widget($args, $i) {
-        echo $args['before_widget'];
 
         $tax_query = array();
 
@@ -294,7 +293,6 @@ class Wpsb_Post_Carousel extends WP_Widget{
             </a>
         </div>
         <?php
-        echo $args['after_widget'];
     }
 }
 

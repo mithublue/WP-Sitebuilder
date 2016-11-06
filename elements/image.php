@@ -42,7 +42,6 @@ class Wpsb_Image extends Wpsb_Base_Element {
 
     function widget($args, $instance) {
         ?>
-        <?php echo $args['before_widget']; ?>
         <div>
             <?php echo $args['before_title']; ?>
             <?php echo $instance['title']; ?>
@@ -61,7 +60,6 @@ class Wpsb_Image extends Wpsb_Base_Element {
                 <?php echo !empty($instance['height']) ? 'height='.$instance['height'] : '' ;?>
             />
         </div>
-        <?php echo $args['after_widget']; ?>
         <?php
     }
 

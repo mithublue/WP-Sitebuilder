@@ -189,7 +189,7 @@ class Wpsb_Carousel extends WP_Widget{
     }
 
     function widget($args, $i) {
-        echo $args['before_widget'];
+
         ?>
         <div id="<?php echo $i['settings']['slider_id']; ?>" class="carousel slide" data-ride="carousel" style="max-height: <?php echo $i['settings']['height']; ?>px;overflow: hidden;">
             <!-- Indicators -->
@@ -254,7 +254,6 @@ class Wpsb_Carousel extends WP_Widget{
             </a>
         </div>
         <?php
-        echo $args['after_widget'];
     }
 }
 

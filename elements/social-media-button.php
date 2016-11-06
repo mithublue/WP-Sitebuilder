@@ -127,7 +127,6 @@ class Wpsb_Social_Button extends WP_Widget{
     }
 
     function widget($args, $i) {
-        echo $args['before_widget'];
         ?>
         <div class="Wpsb_Social_Button">
             <?php
@@ -139,7 +138,6 @@ class Wpsb_Social_Button extends WP_Widget{
             ?>
         </div>
         <?php
-        echo $args['after_widget'];
     }
 }
 

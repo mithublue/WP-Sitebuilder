@@ -55,7 +55,6 @@ class Wpsb_Rich_Text extends WP_Widget{
     }
 
     function widget($args, $i) {
-        echo $args['before_widget'];
         echo $args['before_title'];
         echo $i['title'];
         echo $args['after_title'];
@@ -64,7 +63,6 @@ class Wpsb_Rich_Text extends WP_Widget{
             <?php nl2br($i['text']); ?>
         </div>
         <?php
-        echo $args['after_widget'];
     }
 }
 
