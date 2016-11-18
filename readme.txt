@@ -52,6 +52,11 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 
+= 0.0.2.3 =
+
+* [fix] Plugin renamed
+* [new] List of add ons are added
+
 = 0.0.2.2 =
 
 * [new] Notice modal added.

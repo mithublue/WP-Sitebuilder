@@ -1,11 +1,11 @@
 <?php
 /*
- * Plugin Name: WP Sitebuilder github
+ * Plugin Name: WP Sitebuilder
  * Plugin URI: https://wordpress.org/plugins/wp-sitebuilder/
  * Description: Sitebuilder for your site with flexible and easy to use options
  * Author: Mithu A Quayium
  * Author URI: http://cybercraftit.com/
- * Version: 0.0.2.2
+ * Version: 0.0.2.3
  * Text Domain: wpsb
  * License: GPL2
 */
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Required minimums and constants
  */
-define( 'WPSB_VERSION', '0.0.2.2' );
+define( 'WPSB_VERSION', '0.0.2.3' );
 define( 'WPSB_ROOT', dirname(__FILE__) );
 define( 'WPSB_ASSET_PATH', plugins_url('assets',__FILE__) );
 
@@ -84,22 +84,17 @@ class WPSB_Pagebuilder {
             include_once WPSB_ROOT.'/includes/admin/wpsb-settings-panel.php';
         } );
         do_action('wpsb_admin_menu', 'wpsb-menu' );
-        add_submenu_page( 'wpsb-menu', __('Get Mote Features','wpsb'), __('Get Mote Features','wpsb'), 'manage_options','wpsb_add_ons', array($this,'add_on_page') );
     }
 
-    /**
-     * List of add ons
-     */
-    function add_on_page(){
 
-    }
 
 	/**
 	 * inlcude the necessary files
 	 * both admin adn frontend
 	 */
 	public function includes(){
-        include_once WPSB_ROOT.'/wpsb-functions.php';
+        include_once WPSB_ROOT.'/add-on.php';
+	    include_once WPSB_ROOT.'/wpsb-functions.php';
         include_once WPSB_ROOT.'/includes/ajax-actions.php';
         include_once WPSB_ROOT.'/includes/admin/templates-panel.php';
 		include_once WPSB_ROOT.'/includes/admin/pagebuilder-panel.php';
