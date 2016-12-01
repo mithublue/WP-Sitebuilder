@@ -1,10 +1,10 @@
 === WP Sitebuilder ===
 Contributors: mithublue, cybercraftit
 Donate link: 
-Tags:  sitebuilder, wp sitebuilder, wordpress sitebuilder, content builder, wp content builder, formbuilder, form builder, wp formbuilder, wp layout builder, layout editor, wp layout editor, landing page builder,  layout customizer, layouts, page builder, pagebuilder, admin, builder, cms, content, CSS, gallery, grid, layout, page, pages, Post, responsive, widget, widgets, Adaptive Editor, all in one, BackEnd builder, BackEnd editor, builder, coming soon page, creating landing pages, custom pages, design, drag and drop builder, Drag And Drop editor, Drag drop, edit, editing, editor, fonts, home page builder, html5, image, image backgrounds, images layout, layout builder, layout builder plugin, live editor, page, page builder, page builder plugin, Page Editor, Page Layout, responsive, short, short code, shortcode, site-builder, template, Template Builder, templates, theme builder, TinyMCE, transitions, video backgrounds, visual builder, visual composer, visual editor, website builder, widgets, wordpress, wysiwyg editor
+Tags:  wp manager, wp total manager, wpmanager, sitebuilder, wp sitebuilder, wordpress sitebuilder, content builder, wp content builder, formbuilder, form builder, wp formbuilder, wp layout builder, layout editor, wp layout editor, landing page builder,  layout customizer, layouts, page builder, pagebuilder, admin, builder, cms, content, CSS, gallery, grid, layout, page, pages, Post, responsive, widget, widgets, Adaptive Editor, all in one, BackEnd builder, BackEnd editor, builder, coming soon page, creating landing pages, custom pages, design, drag and drop builder, Drag And Drop editor, Drag drop, edit, editing, editor, fonts, home page builder, html5, image, image backgrounds, images layout, layout builder, layout builder plugin, live editor, page, page builder, page builder plugin, Page Editor, Page Layout, responsive, short, short code, shortcode, site-builder, template, Template Builder, templates, theme builder, TinyMCE, transitions, video backgrounds, visual builder, visual composer, visual editor, website builder, widgets, wordpress, wysiwyg editor, role, role manager, wp role manager, capability, capabilities manager , capability manager , wp capability manager, roles, roles manager, wp roles manager, access, role editor, capability editor, capabilities editor, roles editor, user role , user role permission, role permission, wordpress user roles, user roles editor, role menu, permission, manager roles, user roles editor, change role, change roles, change capability , change capabilities
 Requires at least: 3.0.1
 Tested up to: 4.6.1
-Stable tag: 0.0.2.3
+Stable tag: 0.0.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,6 +14,9 @@ This plugin is to let you build your site quite easily without any coding with e
 
 =Features=
 
+* Manage roles
+* Create or remove roles
+* Modify capabilites for any role
 * Drag and drop pagebuilder
 * Custom template chooser for each post
 * Lightweight
@@ -51,6 +54,10 @@ This section describes how to install the plugin and get it working.
 5. screenshot-5
 
 == Changelog ==
+
+= 0.0.2.4 =
+
+* [new] Role manager added
 
 = 0.0.2.3 =
 
