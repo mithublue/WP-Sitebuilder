@@ -100,6 +100,9 @@ class WPSB_Pagebuilder {
 		include_once WPSB_ROOT.'/includes/admin/pagebuilder-panel.php';
         include_once WPSB_ROOT.'/elements/init.php';
 
+        //role manager
+        include_once WPSB_ROOT.'/modules/role-manager/role-manager.php';
+
         /**
          * frontend
          */
