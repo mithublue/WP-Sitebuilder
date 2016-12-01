@@ -55,7 +55,7 @@
             </div>
         </div>
     </div>
-    <notice_modal :show.sync="show_save_result_modal" default_button="true" disappear="auto">
+    <notice_modal :show.sync="show_save_result_modal" default_button="false" disappear="auto">
         <div slot="header">
             <div v-if="saved_result.success" class="alert alert-success">
                 {{ saved_result.success }}

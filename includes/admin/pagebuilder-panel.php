@@ -108,9 +108,7 @@ class Lego_Pagebuilder_Panel {
             var lego_layout = JSON.parse('<?php echo json_encode( maybe_unserialize($this->lego_layout,false ) ) ; ?>');
             var is_lego_enabled = '<?php echo $this->is_lego_enabled; ?>';
         </script>
-        <?php
-        include_once WPSB_ROOT.'/widgets/vue.widgets.php';
-        ?>
+        <?php include_once WPSB_ROOT.'/widgets/vue.widgets.php'; ?>
         <?php wp_nonce_field('save', '_wpsb_builder_nonce') ?>
         <div class="bs-container" v-cloak>
             <div>
