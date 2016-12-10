@@ -45,10 +45,13 @@ class Lego_Pagebuilder_Panel {
         $widgets = $GLOBALS['wp_widget_factory'];
         foreach( $widgets->widgets as $name => $widget_data ) {
             if( strstr( $name, 'WP_' ) ) {
+                !isset($widget_list['wp'])?$widget_list['wp'] = '' : '';
                 $widget_list['wp'] .= '<a @click=\'render_element_form( "'.$widget_data->name.'", "widget", "'.$name.'", "", "'.$widget_data->id_base.'", "true" )\' data-type="widget" data-label="'.$widget_data->name.'" data-instance="" data-name="'.$name.'" href="javascript:" class="btn btn-default mt5 mr5 mb5 br0 lego-widget-button">'.$widget_data->name.'</a>';
             } elseif( strstr( $name, 'WC_' ) ) {
+                !isset($widget_list['woocommerce'])?$widget_list['woocommerce'] = '' : '';
                 $widget_list['woocommerce'] .= '<a @click=\'render_element_form( "'.$widget_data->name.'", "widget", "'.$name.'", "" , "'.$widget_data->id_base.'", "true" )\' data-type="widget" data-label="'.$widget_data->name.'" data-instance="" data-name="'.$name.'" href="javascript:" class="btn btn-default mt5 mr5 mb5 br0 lego-widget-button">'.$widget_data->name.'</a>';
             } else {
+                !isset($widget_list['custom'])?$widget_list['custom'] = '' : '';
                 $widget_list['custom'] .= '<a @click=\'render_element_form( "'.$widget_data->name.'", "widget", "'.$name.'", "" , "'.$widget_data->id_base.'", "true" )\' data-type="widget" data-label="'.$widget_data->name.'" data-instance="" data-name="'.$name.'" href="javascript:" class="btn btn-default mt5 mr5 mb5 br0 lego-widget-button">'.$widget_data->name.'</a>';
             }
 
@@ -82,6 +85,7 @@ class Lego_Pagebuilder_Panel {
     function populate_sitebuilder_elements( $widget_list ) {
         global $wpsb_widgets;
         foreach ( $wpsb_widgets as $widget_name => $lego_widget ) {
+            !isset($widget_list['wp-sitebuilder']) ? $widget_list['wp-sitebuilder'] = '': '';
             $widget_list['wp-sitebuilder'] .= '<a @click=\'render_element_form( "' . $lego_widget['label'] . '", "widget", "' . $widget_name . '", "" , "'.$lego_widget['id_base'].'", "false" )\' data-type="widget" data-label="" data-instance="" data-name="" href="javascript:" class="btn btn-default mt5 mr5 mb5 br0 lego-widget-button">' . $lego_widget['label'] . '</a>';
             $widget_list = apply_filters('wpsb_nonwidget_element_list',$widget_list);
         }
