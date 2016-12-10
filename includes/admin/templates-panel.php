@@ -81,11 +81,14 @@ if( !class_exists('WPPT_Init') ) :
          * @param $post
          */
         function save_custom_post_template( $post_id, $post ) {
+            global $pagenow;
 
+            if( $pagenow != 'post.php' ) return;
             if ( get_post_type( $post_id ) == 'page' ) return;
             if( !current_user_can( 'edit_posts' ) ) return;
-            $wpsb_blank_template = sanitize_text_field($_POST['wpsb_blank_template']);
-            $post_template = sanitize_text_field( $_POST['page_template'] );
+
+            $wpsb_blank_template = isset($_POST['wpsb_blank_template'])?sanitize_text_field($_POST['wpsb_blank_template']) : '';
+            $post_template = isset($_POST['page_template'])?sanitize_text_field( $_POST['page_template'] ) : '';
 
             if( !empty($wpsb_blank_template) ) {
                 update_post_meta( $post_id, 'wpsb_blank_template', $wpsb_blank_template );

@@ -98,11 +98,7 @@ class WPSB_Pagebuilder {
         include_once WPSB_ROOT.'/add-on.php';
 	    include_once WPSB_ROOT.'/wpsb-functions.php';
         include_once WPSB_ROOT.'/includes/ajax-actions.php';
-
-        if( $pagenow == 'post.php' ) {
-            include_once WPSB_ROOT.'/includes/admin/templates-panel.php';
-        }
-
+        include_once WPSB_ROOT.'/includes/admin/templates-panel.php';
 		include_once WPSB_ROOT.'/includes/admin/pagebuilder-panel.php';
         include_once WPSB_ROOT.'/elements/init.php';
 
