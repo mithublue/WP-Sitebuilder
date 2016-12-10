@@ -93,10 +93,16 @@ class WPSB_Pagebuilder {
 	 * both admin adn frontend
 	 */
 	public function includes(){
+	    global $pagenow;
+
         include_once WPSB_ROOT.'/add-on.php';
 	    include_once WPSB_ROOT.'/wpsb-functions.php';
         include_once WPSB_ROOT.'/includes/ajax-actions.php';
-        include_once WPSB_ROOT.'/includes/admin/templates-panel.php';
+
+        if( $pagenow == 'post.php' ) {
+            include_once WPSB_ROOT.'/includes/admin/templates-panel.php';
+        }
+
 		include_once WPSB_ROOT.'/includes/admin/pagebuilder-panel.php';
         include_once WPSB_ROOT.'/elements/init.php';
 
@@ -201,8 +207,8 @@ class WPSB_Pagebuilder {
 WPSB_Pagebuilder::get_instance();
 
 // add plugin upgrade notification
-add_action('in_plugin_update_message-wp-sitebuilder/wp-sitebuilder.php', 'showUpgradeNotification', 10, 2);
-function showUpgradeNotification($currentPluginMetadata, $newPluginMetadata){
+add_action('in_plugin_update_message-wp-sitebuilder/wp-sitebuilder.php', 'ashowUpgradeNotification', 10, 2);
+function ashowUpgradeNotification($currentPluginMetadata, $newPluginMetadata){
     // check "upgrade_notice"
     if (isset($newPluginMetadata->upgrade_notice) && strlen(trim($newPluginMetadata->upgrade_notice)) > 0){
         echo '<p style="background-color: #d54e21; padding: 10px; color: #f9f9f9; margin-top: 10px"><strong>Important Upgrade Notice:</strong>';
